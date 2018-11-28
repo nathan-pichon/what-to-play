@@ -16,7 +16,7 @@ class Form extends Component {
     render() {
         return (
             <section>
-                <form onSubmit={Form.onSubmit()}>
+                <form onSubmit={this.onSubmit()}>
                 </form>
             </section>
         );
