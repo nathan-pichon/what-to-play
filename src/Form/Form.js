@@ -6,12 +6,14 @@ class Form extends Component {
         super(props);
 
         this.searchUser = props.searchUser || (() => {});
+        this.selectUserByArrow = props.selectUserByArrow  || (() => {});
         this.state = {
             users: [],
             input: ""
         };
 
         this.setInput = this.setInput.bind(this);
+        this.handleKeyDown = this.handleKeyDown.bind(this);
     }
 
     setInput(event) {
@@ -31,13 +33,17 @@ class Form extends Component {
                 console.log("enter");
                 break;
             case "ArrowDown":
-            case "ArrowUp":
-                console.log("arrow up or down");
+                console.log("arrow down");
                 event.preventDefault();
+                this.selectUserByArrow(1);
+                break;
+            case "ArrowUp":
+                console.log("arrow up");
+                event.preventDefault();
+                this.selectUserByArrow(-1);
                 break;
             default:
         }
-        // this.searchUser(this.state.input)
     }
 
     render() {
